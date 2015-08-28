@@ -27,7 +27,7 @@
     <a class="list_own" href="/property/own">List Your Properties</a>
 
     <form class="search" action="/property/search" method="get">
-      <label>Tags: <input name="tags" type="text"></label>
+      <label>Tags: <input name="tags" type="text" placeholder="List All"></label>
       <input type="submit" value="Filter">
     </form>
   </div>
@@ -45,8 +45,13 @@
             <% unless property.tags.size == i + 1 %>,<% end %>
           <% end %>
         </p>
+        <button class="booking" id="<%= property.id %>">Book this property</button>
+        <form class="booking" id="<%= property.id %>">
+          <input name="start_date" type="text">
+          <input name="end_date" type="text">
+          <input type="submit" value="Submit">
+        </form>
       </div>
     <% end %>
   </div>
-
 </div>

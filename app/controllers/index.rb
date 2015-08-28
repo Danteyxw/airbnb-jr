@@ -66,18 +66,22 @@ end
 
 get '/property/search' do
   tags = params[:tags]
-  tags = tags.split(",").map { |tag| tag.strip.downcase }
+  unless tags.nil? || tags.size == 0
+    tags = tags.split(",").map { |tag| tag.strip.downcase }
+    @properties = []
 
-  @properties = []
-
-  tags.each do |tag|
-    @tag = Tag.find_by(name: tag)
-    @tag.properties.each do |property|
-      @properties << property
+    tags.each do |tag|
+      @tag = Tag.find_by(name: tag)
+      @tag.properties.each do |property|
+        @properties << property
+      end
     end
+
+    @properties.uniq
+  else
+    @properties = Property.all
   end
 
-  @properties.uniq
   erb :index
 end
 
