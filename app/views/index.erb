@@ -41,17 +41,21 @@
         <p>Address: <%= property.address %></p>
         <p>Tags:
           <% property.tags.each_with_index do |tag, i| %>
-            <span><%= tag.name%></span>
-            <% unless property.tags.size == i + 1 %>,<% end %>
+            <span><%= tag.name%></span><%= "," unless property.tags.size == i + 1 %>
           <% end %>
         </p>
 
         <button class="show_bookings" id="<%= property.id %>">Show current bookings</button>
-
+        <div class="bookings">
+          <% property.bookings.each do |booking| %>
+          <p><%= booking.start_date.to_s + " to " + booking.end_date.to_s %></p>
+          <% end %>
+        </div>
         <button class="booking" id="<%= property.id %>">Book this property</button>
-        <form class="booking" id="<%= property.id %>">
-          <input name="start_date" type="text">
-          <input name="end_date" type="text">
+        <form class="booking" id="<%= property.id %>" action="/property/book" method="post">
+          <input name="start_date" type="text" placeholder="yyyy-mm-dd">
+          <input name="end_date" type="text" placeholder="yyyy-mm-dd">
+          <input name="property_id" type="hidden" value="<%= property.id %>">
           <input type="submit" value="Submit">
         </form>
       </div>

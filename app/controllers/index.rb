@@ -96,9 +96,35 @@ get '/property/own' do
   end
 end
 
-# post '/property/book' do
-#   start_date = params[:start_date]
-#   end_date = params[:end_date]
+post '/property/book' do
+  unless session[:user].nil?
+    user = User.find(session[:user])
 
-#   user.bookings.new(start_date: start_date, end_date: end_date, property_id: )
-# end
+    a_start_date = params[:start_date]
+    a_end_date = params[:end_date]
+    property_id = params[:property_id]
+
+    booking = user.bookings.new(start_date: a_start_date, end_date: a_end_date, property_id: property_id)
+
+    a_start_date = Date.parse(a_start_date)
+    a_end_date = Date.parse(a_end_date)
+
+    property = Property.find(property_id)
+
+    if a_end_date > a_start_date && a_start_date > Date.today
+      bookings = property.bookings
+      unless bookings.nil?
+        bookings.each do |booking|
+          b_start_date = Date.parse(booking.start_date)
+          b_end_date = Date.parse(booking.start_date)
+          return "The duration of your booking clashes with others" unless a_end_date < b_start_date || a_start_date > b_end_date
+        end
+      end
+      booking.save
+    else
+      "Sorry, we do not do time travel services (check your dates)"
+    end
+  else
+    "Please login to book a property"
+  end
+end
