@@ -4,6 +4,25 @@
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
+}
+
+.login {
+  position: fixed;
+  top: 50%;
+  width: 20%;
+  left: 40%;
+}
+
+.signup {
+  position: fixed;
+  top: 50%;
+  width: 20%;
+  left: 40%;
+}
+
+.signup label, .login label {
+  display: block;
 }
