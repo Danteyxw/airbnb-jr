@@ -46,4 +46,23 @@ $(document).ready(function() {
       $(".response").show();
     });
   });
+
+  $("form.create").submit(function(event){
+    event.preventDefault();
+
+    $.ajax({
+      method: "post",
+      url: $(this).attr("action"),
+      data: $(this).serialize()
+    }).done(function(response){
+      $(".create input[name='name']").val('');
+      $(".create input[name='rate']").val('');
+      $(".create input[name='capacity']").val('');
+      $(".create input[name='address']").val('');
+      $(".create input[name='tags']").val('');
+      $(".response").empty();
+      $(".response").append("<p>" + response + "</p>");
+      $(".response").show();
+    });
+  });
 });
