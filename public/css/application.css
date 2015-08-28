@@ -17,6 +17,15 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.response {
+  background-color: #fb0;
+  color: white;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  display: none;
+}
+
 nav {
   background-color: #59a;
   height: 40px;
