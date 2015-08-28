@@ -60,7 +60,7 @@ post '/property/create' do
       "Invalid Submission, please retry"
     end
   else
-    "Please login to list your properties"
+    "Please login to submit your properties"
   end
 end
 
@@ -78,12 +78,15 @@ get '/property/search' do
   end
 
   @properties.uniq
-
   erb :index
 end
 
 get '/property/own' do
-  @user = User.find(session[:user])
-  @properties = user.properties
-  erb :index
+  unless session[:user].nil?
+    user = User.find(session[:user])
+    @properties = user.properties
+    erb :index
+  else
+    "Please login to search your properties"
+  end
 end

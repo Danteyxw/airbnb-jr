@@ -44,7 +44,7 @@ a.login, a.signup{
   margin: 0 10px;
 }
 
-a.create {
+a.create, a.list_own {
   text-decoration: none;
   color: teal;
 }
