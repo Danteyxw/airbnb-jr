@@ -50,3 +50,15 @@ Booking
   end_date
   belongs_to user
   belongs_to property
+
+
+common
+  nav
+    current_account signup login
+
+index.erb
+  filter search
+    own, tag
+  properties list
+    properties
+      info edit delete book

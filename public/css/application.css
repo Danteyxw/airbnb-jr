@@ -1,6 +1,6 @@
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 700px;
   padding: 0px 20px 20px 20px;
   border: 1px solid silver;
 }
@@ -19,9 +19,9 @@ h1, h2, h3, h4, h5, h6 {
 
 nav {
   background-color: #59a;
-  height: 50px;
+  height: 40px;
   text-align: right;
-  line-height: 50px;
+  line-height: 40px;
   padding: 0 10px;
 }
 
@@ -35,20 +35,16 @@ a.login, a.signup {
   margin: 0 10px;
 }
 
-form.login {
+form.login, form.signup {
+  display: none;
   position: fixed;
-  top: 30%;
+  top: 35%;
   width: 20%;
-  height: 30%;
+  height: 15%;
   left: 40%;
-}
-
-form.signup {
-  position: fixed;
-  top: 30%;
-  width: 20%;
-  height: 30%;
-  left: 40%;
+  border: 1px solid silver;
+  text-align: center;
+  padding: 2.5% 0;
 }
 
 .signup label, .login label {
