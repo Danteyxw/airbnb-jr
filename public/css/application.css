@@ -81,3 +81,11 @@ form.login, form.signup {
 .signup label, .login label, .create label {
   display: block;
 }
+
+.list {
+  margin-top: 30px;
+}
+
+.property {
+  border-top: 1px solid silver;
+}
