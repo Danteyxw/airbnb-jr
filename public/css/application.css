@@ -38,24 +38,46 @@ th {
   text-align: left;
 }
 
-a.login, a.signup {
+a.login, a.signup{
   color: white;
   text-decoration: none;
   margin: 0 10px;
 }
 
+a.create {
+  text-decoration: none;
+  color: teal;
+}
+
+form.create {
+  display: none;
+  position: fixed;
+  top: 30%;
+  width: 20%;
+  height: 250px;
+  left: 40%;
+  border: 1px solid silver;
+  text-align: center;
+  padding: 2.5% 0;
+  float: left;
+}
+
+form.search {
+  float: right;
+}
+
 form.login, form.signup {
   display: none;
   position: fixed;
-  top: 35%;
+  top: 30%;
   width: 20%;
-  height: 15%;
+  height: 100px%;
   left: 40%;
   border: 1px solid silver;
   text-align: center;
   padding: 2.5% 0;
 }
 
-.signup label, .login label {
+.signup label, .login label, .create label {
   display: block;
 }

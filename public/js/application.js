@@ -10,6 +10,11 @@ $(document).ready(function() {
     $("form.login").toggle();
   });
 
+  $("a.create").on("click", function(event){
+    event.preventDefault();
+    $("form.create").toggle();
+  });
+
   $("form.signup").submit(function(event){
     event.preventDefault();
 

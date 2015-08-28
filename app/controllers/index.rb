@@ -3,7 +3,7 @@ get '/' do
   erb :index
 end
 
-post '/signup' do
+post '/user/signup' do
   email = params[:email]
   password = params[:password]
   user = User.new(email: email, password: password)
@@ -16,7 +16,7 @@ post '/signup' do
   end
 end
 
-post '/login' do
+post '/user/login' do
   email = params[:email]
   password = params[:password]
   user = User.find_by(email: email)

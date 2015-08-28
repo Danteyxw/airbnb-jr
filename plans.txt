@@ -27,6 +27,7 @@ Property
   name
   rate
   capacity
+  address
   belongs to user
   has many property_tags
   has many tags, through property_tags
