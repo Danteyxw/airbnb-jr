@@ -1,0 +1,54 @@
+Simple airbnb
+
+#User Registration
+Users can sign up
+Users can login
+
+#User Feed
+Users can CRUD property
+Users can view all property
+
+Users can create tag(category) for their property
+Users can view all property of one tag
+
+#booking
+Users able to book a property
+Users cant book their own property
+Users able to view their own property booking
+
+
+Users
+  username
+  password
+  email
+  name
+  #has many properties
+
+Property
+  user_id
+  name
+  rate
+  capacity
+  belongs to user
+  has many property_tags
+  has many tags, through property_tags
+
+Tag
+  name
+  has many property_tags
+  has many properties, through property_tags
+
+PropertyTag
+  name
+  property_id
+  tag_id
+  belongs to property
+  belongs to tag
+
+Booking
+  property_id
+  user_id
+  start_date
+  end_date
+  belongs_to user
+  belongs_to property
