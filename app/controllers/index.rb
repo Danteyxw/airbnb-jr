@@ -1,8 +1,9 @@
 get '/' do
   # Look in app/views/index.erb
-  @user = User.find(session[:user])
-  @properties = Property.all
-  erb :index
+    @user = User.find(session[:user]) unless session[:user].nil?
+
+    @properties = Property.all.reverse
+    erb :index
 end
 
 post '/user/signup' do
@@ -77,9 +78,9 @@ get '/property/search' do
       end
     end
 
-    @properties.uniq
+    @properties.uniq.reverse
   else
-    @properties = Property.all
+    @properties = Property.all.reverse
   end
 
   erb :index
@@ -94,3 +95,10 @@ get '/property/own' do
     "Please login to search your properties"
   end
 end
+
+# post '/property/book' do
+#   start_date = params[:start_date]
+#   end_date = params[:end_date]
+
+#   user.bookings.new(start_date: start_date, end_date: end_date, property_id: )
+# end

@@ -45,6 +45,9 @@
             <% unless property.tags.size == i + 1 %>,<% end %>
           <% end %>
         </p>
+
+        <button class="show_bookings" id="<%= property.id %>">Show current bookings</button>
+
         <button class="booking" id="<%= property.id %>">Book this property</button>
         <form class="booking" id="<%= property.id %>">
           <input name="start_date" type="text">
