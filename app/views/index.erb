@@ -32,7 +32,22 @@
   </div>
 
   <div class="list">
-
+    <% @properties.each do |property| %>
+      <div class="property", id="<%= property.id %>">
+        <p>Name: <%= property.name %></p>
+        <p>Rate: <%= property.rate %></p>
+        <p>Capacity: <%= property.capacity %></p>
+        <p>Address: <%= property.address %></p>
+        <p>Tags:
+          <% property.tags.each_with_index do |tag, i| %>
+            <span><%= tag.name%></span>
+            <% unless property.tags.size == i + 1 %>
+              ,
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
   </div>
 
 </div>

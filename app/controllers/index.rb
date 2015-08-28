@@ -1,5 +1,6 @@
 get '/' do
   # Look in app/views/index.erb
+  @properties = Property.all
   erb :index
 end
 
