@@ -1,5 +1,6 @@
 get '/' do
   # Look in app/views/index.erb
+  @user = User.find(session[:user])
   @properties = Property.all
   erb :index
 end
@@ -61,4 +62,28 @@ post '/property/create' do
   else
     "Please login to list your properties"
   end
+end
+
+get '/property/search' do
+  tags = params[:tags]
+  tags = tags.split(",").map { |tag| tag.strip.downcase }
+
+  @properties = []
+
+  tags.each do |tag|
+    @tag = Tag.find_by(name: tag)
+    @tag.properties.each do |property|
+      @properties << property
+    end
+  end
+
+  @properties.uniq
+
+  erb :index
+end
+
+get '/property/own' do
+  @user = User.find(session[:user])
+  @properties = user.properties
+  erb :index
 end

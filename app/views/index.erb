@@ -14,7 +14,7 @@
   </form>
 
   <div class="controls">
-    <a class="create" href="/property/create">List Your Property</a>
+    <a class="create" href="/property/create">Host A Property</a>
     <form class="create" action="/property/create" method="post">
       <label>Name:<br><input name="name" type="text" requried></label>
       <label>Rate:<br><input name="rate" type="integer" requried></label>
@@ -24,10 +24,11 @@
       <br><input type="submit" value="Create">
     </form>
 
-    <form class="search" action="/property/list" method="post">
+    <a class="list_own" href="/property/own">List Your Properties</a>
+
+    <form class="search" action="/property/search" method="get">
       <label>Tags: <input name="tags" type="text"></label>
       <input type="submit" value="Filter">
-      <input type="submit" value="Your Properties">
     </form>
   </div>
 
@@ -41,9 +42,7 @@
         <p>Tags:
           <% property.tags.each_with_index do |tag, i| %>
             <span><%= tag.name%></span>
-            <% unless property.tags.size == i + 1 %>
-              ,
-            <% end %>
+            <% unless property.tags.size == i + 1 %>,<% end %>
           <% end %>
         </p>
       </div>
